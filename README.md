@@ -75,4 +75,4 @@ Try again.
 ###8. Kui keegi mängijatest on võitnud, saadetakse sellekohane sõnum, et kas sa võitsid või kaotasid.
 
 #Mängu toimimse skeem on lisatud ka .png failina
-###<a href="https://github.com/rreintal/tic-tac-toe/blob/master/scheme/tictactoe-scheme.png">tictactoe-scheme.png</a>
+<a href="https://github.com/rreintal/tic-tac-toe/blob/master/scheme/tictactoe-scheme.png">tictactoe-scheme.png</a>
