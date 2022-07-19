@@ -1,5 +1,5 @@
 
-#Mis peab olemas olema?
+# Mis peab olemas olema?
 * Java 17
 * Google Gmail API 1.33
 * Javax mail 1.5.1
