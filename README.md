@@ -8,7 +8,7 @@
 
 ## Kuidas programmi alustad?
 
-1. Esimese asjana tuleb teha Gmail API quickstart, et saada kätte oma token ja alla laadida credentials.json fail Google Cloudi projekti alt.
+1. Esimese asjana tuleb teha Gmail API quickstart, et saada kätte oma token ja alla laadida credentials.json fail Google Cloudi projekti alt. Kindlasti peab skoop olema ````MAIL_GOOGLE_COM````.
 ```
 Link: https://developers.google.com/gmail/api/quickstart/java
 ```
