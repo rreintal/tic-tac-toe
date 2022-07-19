@@ -35,7 +35,7 @@ public class application {
     private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
     /** Directory to store authorization tokens for this application. */
     // TOKENS_DIRECTORY_PATH salvesta env muutujana.
-    private static final String TOKENS_DIRECTORY_PATH = System.getenv("TOKENS");
+    private static final String TOKENS_DIRECTORY_PATH= System.getenv("TOKENS");
 
     // DATAPASE_PATH salvesta env muutujana. (.txt fail)
     private static final String DATABASE_PATH = System.getenv("DATABASE");
@@ -89,20 +89,34 @@ public class application {
     public static void main(String... args) throws IOException, GeneralSecurityException, MessagingException {
         System.out.println("Tic-Tac-Toe game handler is starting...");
         System.out.println("Loading games from DB.");
-        loadGames();
-        while (true) {
-            List<Message> unreadMessages = fetchUnreadMessages();
-            for (Message unreadMessage : unreadMessages) {
-                request(unreadMessage);
-                confirmation(unreadMessage);
+
+        Timer timer = new Timer();
+
+        TimerTask startApp = new TimerTask() {
+            @Override
+            public void run() {
+                loadGames();
+                List<Message> unreadMessages = fetchUnreadMessages();
                 try {
-                    turn(unreadMessage);
-                }catch (Exception e) {
-                    System.out.println("exception at turn()");
+                    for (Message unreadMessage : unreadMessages) {
+                        request(unreadMessage);
+                        confirmation(unreadMessage);
+                        try {
+                            turn(unreadMessage);
+                        } catch (Exception e) {
+                            System.out.println("exception at turn()");
+                        }
+                        markAsRead(unreadMessage); // see viimasena
+                    }
                 }
-                markAsRead(unreadMessage); // see viimasena
+                catch (Exception e) {
+                    // Pole vaja tegeleda, kuna faili pathid peab eelnevalt määrama.
+                }
             }
-        }
+        };
+
+        // Starti applicationit iga 2 minuti tagant.
+        timer.schedule(startApp, 0L, 120000L);
     }
 
     // ------------------------------------------------------------------------------------------------------------
