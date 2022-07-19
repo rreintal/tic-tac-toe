@@ -64,15 +64,15 @@ Näiteks:
 ```
 Mark:(1,2)
 ```
-### Vale käigu puhul saadetakse sellekohane sõnum ning oodatakse, et mängija teeb uue käigu.
+###Vale käigu puhul saadetakse sellekohane sõnum ning oodatakse, et mängija teeb uue käigu.
 ```
 Wrong input!
 Try again.
 ```
 
-### 7. Peale käigu käimist saadetakse laud teisele mängijale, ning oodatakse tema käiku.
+###7. Peale käigu käimist saadetakse laud teisele mängijale, ning oodatakse tema käiku.
 
-### 8. Kui keegi mängijatest on võitnud, saadetakse sellekohane sõnum, et kas sa võitsid või kaotasid.
+###8. Kui keegi mängijatest on võitnud, saadetakse sellekohane sõnum, et kas sa võitsid või kaotasid.
 
-# Mängu toimimse skeem on lisatud ka .png failina
-### <a href="https://github.com/rreintal/tic-tac-toe/blob/master/scheme/tictactoe-scheme.png">tictactoe-scheme.png</a>
+#Mängu toimimse skeem on lisatud ka .png failina
+###<a href="https://github.com/rreintal/tic-tac-toe/blob/master/scheme/tictactoe-scheme.png">tictactoe-scheme.png</a>
