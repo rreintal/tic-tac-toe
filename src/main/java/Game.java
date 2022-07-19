@@ -90,7 +90,6 @@ public class Game {
         board[x][y] = marker;
     }
 
-    // teisest projektist
 
     public String getBoardString() {
         String result ="";

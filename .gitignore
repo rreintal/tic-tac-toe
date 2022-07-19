@@ -5,7 +5,6 @@
 build
 
 tokens
-src/main/java/META-INF
 src/main/resources/credentials.json
 
 out/production/resources/credentials.json
