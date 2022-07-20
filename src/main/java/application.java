@@ -305,8 +305,7 @@ public class application {
         try {
             // loe kogu fail ilma mänguta, mida vaja updateda
             List<String> data = new ArrayList<>();
-            // BufferedReader reader = new BufferedReader(new FileReader(new File("src/main/java/database.txt")));
-            BufferedReader reader = new BufferedReader(new FileReader(new File(DATABASE_PATH)));
+            BufferedReader reader = new BufferedReader(new FileReader(DATABASE_PATH));
             for (Object line : reader.lines().toArray()) {
                 if (line instanceof String) {
                     if (((String) line).contains(game.getGameID())) {
@@ -318,8 +317,7 @@ public class application {
             reader.close();
 
             // kirjuta kogu PUNKT 1s saadud info faili
-            // BufferedWriter writer = new BufferedWriter(new FileWriter(new File("src/main/java/database.txt")));
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(DATABASE_PATH)));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(DATABASE_PATH));
             for (String datum : data) {
                 writer.write(datum + "\n");
             }
@@ -333,8 +331,7 @@ public class application {
 
     public static void loadGames() {
         try {
-            // BufferedReader br = new BufferedReader(new FileReader(new File("src/main/java/database.txt")));
-            BufferedReader br = new BufferedReader(new FileReader(new File(DATABASE_PATH)));
+            BufferedReader br = new BufferedReader(new FileReader(DATABASE_PATH));
             for (Object line : br.lines().toArray()) {
                 if (line instanceof String) {
                     games.add(getGameFromDBString( (String) line));
@@ -373,7 +370,7 @@ public class application {
     }
     public static void saveGameToDB(Game game) {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(DATABASE_PATH), true));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(DATABASE_PATH, true));
             writer.write(game.getPlayerOne() + ";" +
                     game.getPlayerTwo() + ";" +
                     game.boardToDB() + ";" +
@@ -393,7 +390,7 @@ public class application {
         try {
             // loe kogu fail ilma mänguta, mida vaja updateda
             List<String> data = new ArrayList<>();
-            BufferedReader reader = new BufferedReader(new FileReader(new File(DATABASE_PATH)));
+            BufferedReader reader = new BufferedReader(new FileReader(DATABASE_PATH));
             for (Object line : reader.lines().toArray()) {
                 if (line instanceof String) {
                     if (((String) line).contains(game.getGameID())) {
@@ -404,8 +401,7 @@ public class application {
             }
             reader.close();
             // kirjuta kogu saadud info faili
-            // BufferedWriter writer = new BufferedWriter(new FileWriter(new File("src/main/java/database.txt")));
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(DATABASE_PATH)));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(DATABASE_PATH));
             for (String datum : data) {
                 writer.write(datum + "\n");
             }
