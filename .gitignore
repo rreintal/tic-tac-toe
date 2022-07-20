@@ -8,3 +8,6 @@ tokens
 src/main/resources/credentials.json
 
 out/production/resources/credentials.json
+.idea/artifacts/trips_traps_trull_main_jar2.xml
+.idea/artifacts/trips_traps_trull_jar.xml
+src/main/database/database.txt
