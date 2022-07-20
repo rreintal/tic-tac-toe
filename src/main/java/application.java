@@ -51,7 +51,7 @@ public class application {
             service = getService();
         } catch (IOException | GeneralSecurityException e) {
             e.printStackTrace();
-        }
+        }///Users/richardreintal/Desktop/trips-traps-trull/src/main/resources
     }
 
     /**
@@ -86,7 +86,7 @@ public class application {
                 .build();
     }
 
-    public static void main(String... args) throws IOException, GeneralSecurityException, MessagingException {
+    public static void main(String... args) {
         System.out.println("Tic-Tac-Toe game handler is starting...");
         System.out.println("Loading games from DB.");
 
@@ -186,6 +186,7 @@ public class application {
 
     public static boolean isTurnValid(Message message) throws IOException {
         Game game = getGameByID(getGameIDFromSubject(getSubject(message)));
+        assert game != null;
         System.out.println("isCurrentPlayerTurn: " + isCurrentPlayerTurn(message, game));
         System.out.println("areValidCordinates: " + areValidCordinates(getCordinates(message)));
         System.out.println("isMarkCorrect: " + isMarkCorrect(game, getCordinates(message)));
@@ -209,6 +210,7 @@ public class application {
         int[] xy = getCordinates(message);
         String gameID = getGameIDFromSubject(getSubject(message));
         Game game = getGameByID(gameID);
+        assert game != null;
         game.markSquare(xy[0], xy[1]);
     }
 
@@ -292,8 +294,7 @@ public class application {
 
 
     public static List<Message> fetchUnreadMessages() { // saan kõik messaged mis on UNREAD labeliga
-        List<Message> unread = getAllMessages().stream().filter(x -> x.getLabelIds().contains("UNREAD")).collect(Collectors.toList());
-        return unread;
+        return getAllMessages().stream().filter(x -> x.getLabelIds().contains("UNREAD")).collect(Collectors.toList());
     }
 
 
@@ -382,7 +383,7 @@ public class application {
         }
         catch (Exception error) {
             System.out.println("failed to write data to db");
-            System.out.println(error);
+            System.out.println(error.getMessage());
         }
     }
 
@@ -433,8 +434,7 @@ public class application {
 
     public static Game getGameFromMessage(Message message) throws IOException {
         String gameID = getGameIDFromSubject(getSubject(message));
-        Game game = getGameByID(gameID);
-        return game;
+        return getGameByID(gameID);
     }
 
     public static int[] getCordinates(Message message) {
@@ -506,10 +506,7 @@ public class application {
 
     public static boolean isConfirmationMessage(Message msg) throws IOException {
         // kui threadis on täpselt 2 sõnumit ja snippet algab "OK"
-        if (service.users().threads().get(user, msg.getThreadId()).size() == 2 && msg.getSnippet().startsWith("OK")) {
-            return true;
-        }
-        return false;
+        return service.users().threads().get(user, msg.getThreadId()).size() == 2 && msg.getSnippet().startsWith("OK");
     }
 
     public static String getRequestSender(Message message) {
